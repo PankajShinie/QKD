@@ -222,9 +222,14 @@ def pushTable(data): # Data Template - [Qbit,alice_basis,alice_meas,eve_basis,ev
         if(data[2] != data[6]):                  # if different basis then don't use as key, used for the error
             err_len = err_len + 1
 
-    err_percent = err_len/key_len*100                    # formula used for error calculation
-    errPercentLabel.config(text="P(Error) = " + str(np.floor(err_percent*100)/100) + "%")
-    
+    try:
+        err_percent = err_len/key_len*100                    # formula used for error calculation 
+        errPercentLabel.config(text="P(Error) = " + str(np.floor(err_percent*100)/100 ) + " %")
+    except:
+        errPercentLabel.config(text="P(Error) = " + "%")
+    # err_percent = err_len/key_len*100                    # formula used for error calculation
+    # errPercentLabel.config(text="P(Error) = " + str(np.floor(err_percent*100)/100) + "%")
+
 ##################################
 # Function for clear the table 
 ##################################
